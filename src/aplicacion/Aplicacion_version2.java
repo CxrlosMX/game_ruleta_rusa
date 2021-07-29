@@ -29,20 +29,28 @@ public class Aplicacion_version2 {
 
                 switch (op) {
                     case 1: {
+                        //Bandera para determinar si el jugador desea seguir jugando
                         boolean bandera = true;
                         do {
+                            //Mensaje
                             JOptionPane.showMessageDialog(null, "     RULETA RUSA GAME", "Iniciando Juego", 1);
+                            //Numero de jugadores
                             n = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el numero de jugadores", "Introduciendo N jugadores", 1));
                             Juego juego = new Juego(n);
+                            //Muestra el nombre de los jugadores
                             juego.mostrarJugadores();
                             //Inicia el juego
+                            //Se ejecutara mientras no halla muerto ningun jugador
                             while (!(juego.finJuegov2()));
+                            //Mensaje con el jugador que ha muerto
                             JOptionPane.showMessageDialog(null, "Juego Terminado\nJugador Muerto : " + juego.jMuerto().getNombre(), "Terminado", 1);
-
+                            
+                            //Mensaje con opción si desea seguir jugando
+                            //En este caso usamos una ventana emergente
                             if ((JOptionPane.showConfirmDialog(null, "Continuar Jugando", "Seguir?", JOptionPane.YES_NO_OPTION, 1) == JOptionPane.YES_OPTION)) {
-                                
+
                             } else {
-                                bandera=false;
+                                bandera = false;
                             }
 
                         } while (bandera);

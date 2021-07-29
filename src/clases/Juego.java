@@ -62,11 +62,11 @@ public class Juego {
         //Si se termina de recorrer la lista y ningun jugador a muerto retornamos un false;
         return false;
     }
-     //Método para mostrar el fin del juego
+     //Método para mostrar el fin del juego, version 2
     public boolean finJuegov2() {
         for (int i = 0; i < jugadores.length; i++) {//Recorremos la lista de Jugadores
             //System.out.println(revolver);
-            jugadores[i].disparar(revolver); //Iniciamos la partida, el jugador toma la pistola y dispara
+            jugadores[i].dispararv2(revolver); //Iniciamos la partida, el jugador toma la pistola y dispara
            // System.out.println("");
             if (!(jugadores[i].isVivo())) {//Comprobamos si el jugador esta vivo, si no esta vivo, retornamos un true y termina el juego
                 return true;

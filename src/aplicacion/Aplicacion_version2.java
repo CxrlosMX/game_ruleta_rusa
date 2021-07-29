@@ -33,7 +33,8 @@ public class Aplicacion_version2 {
                         Juego juego = new Juego(n);
                         juego.mostrarJugadores();
                         //Inicia el juego
-                        
+                        while(!(juego.finJuegov2()));
+                        JOptionPane.showMessageDialog(null,"Juego Terminado","Terminado",1);
 
                         break;
                     }

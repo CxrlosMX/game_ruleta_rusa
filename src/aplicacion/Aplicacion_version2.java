@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class Aplicacion_version2 {
 
+    @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
         //Crear una version del juego de la ruleta mejorado
         int n, op = 0;
@@ -28,13 +29,23 @@ public class Aplicacion_version2 {
 
                 switch (op) {
                     case 1: {
-                        JOptionPane.showMessageDialog(null, "     RULETA RUSA GAME", "Iniciando Juego", 1);
-                        n = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el numero de jugadores", "Introduciendo N jugadores", 1));
-                        Juego juego = new Juego(n);
-                        juego.mostrarJugadores();
-                        //Inicia el juego
-                        while(!(juego.finJuegov2()));
-                        JOptionPane.showMessageDialog(null,"Juego Terminado","Terminado",1);
+                        boolean bandera = true;
+                        do {
+                            JOptionPane.showMessageDialog(null, "     RULETA RUSA GAME", "Iniciando Juego", 1);
+                            n = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el numero de jugadores", "Introduciendo N jugadores", 1));
+                            Juego juego = new Juego(n);
+                            juego.mostrarJugadores();
+                            //Inicia el juego
+                            while (!(juego.finJuegov2()));
+                            JOptionPane.showMessageDialog(null, "Juego Terminado\nJugador Muerto : " + juego.jMuerto().getNombre(), "Terminado", 1);
+
+                            if ((JOptionPane.showConfirmDialog(null, "Continuar Jugando", "Seguir?", JOptionPane.YES_NO_OPTION, 1) == JOptionPane.YES_OPTION)) {
+                                
+                            } else {
+                                bandera=false;
+                            }
+
+                        } while (bandera);
 
                         break;
                     }

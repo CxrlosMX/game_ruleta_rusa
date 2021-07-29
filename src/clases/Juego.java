@@ -5,6 +5,8 @@
  */
 package clases;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author: CxrlosMX
@@ -25,13 +27,15 @@ public class Juego {
         comprobarJugadores(n);//Comprobamos nuestros jugadores
         agregarJugadores();//Agregamos nuestros jugadores a nuestra Lista
         revolver = new Revolver();
-        System.out.println(revolver+"\n");
+        //System.out.println(revolver + "\n");
     }
 
     //Creamos un método para agregar jugadores a nuestro juego
     private void agregarJugadores() {
+        String nombre;
         for (int i = 0; i < jugadores.length; i++) {
-            jugadores[i] = new Jugador();
+            nombre = JOptionPane.showInputDialog(null, "Introduce el Nombre del jugador " + (i+1), "Introduciendo Nombre", 1);
+            jugadores[i] = new Jugador(nombre);
         }
     }
 
@@ -48,9 +52,22 @@ public class Juego {
     //Método para mostrar el fin del juego
     public boolean finJuego() {
         for (int i = 0; i < jugadores.length; i++) {//Recorremos la lista de Jugadores
-             System.out.println(revolver);
+            System.out.println(revolver);
             jugadores[i].disparar(revolver); //Iniciamos la partida, el jugador toma la pistola y dispara
             System.out.println("");
+            if (!(jugadores[i].isVivo())) {//Comprobamos si el jugador esta vivo, si no esta vivo, retornamos un true y termina el juego
+                return true;
+            }
+        }
+        //Si se termina de recorrer la lista y ningun jugador a muerto retornamos un false;
+        return false;
+    }
+     //Método para mostrar el fin del juego
+    public boolean finJuegov2() {
+        for (int i = 0; i < jugadores.length; i++) {//Recorremos la lista de Jugadores
+            //System.out.println(revolver);
+            jugadores[i].disparar(revolver); //Iniciamos la partida, el jugador toma la pistola y dispara
+           // System.out.println("");
             if (!(jugadores[i].isVivo())) {//Comprobamos si el jugador esta vivo, si no esta vivo, retornamos un true y termina el juego
                 return true;
             }
@@ -65,6 +82,15 @@ public class Juego {
             jugadores[i].disparar(revolver);
             System.out.println(revolver);
         }
+    }
+    //Método para mostrar a los jugadores
+    public void mostrarJugadores(){
+    String cadena="";
+        
+        for (int i = 0; i < jugadores.length; i++) {
+            cadena=cadena+"\n"+jugadores[i].toString()+"\n";
+        }
+        JOptionPane.showMessageDialog(null, "Lista Jugadores\n"+cadena,"Jugadores",1);
     }
 
     //Ronda V2

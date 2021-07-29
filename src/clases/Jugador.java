@@ -5,6 +5,8 @@
  */
 package clases;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author: CxrlosMX
@@ -22,9 +24,9 @@ public class Jugador {
     private String nombre;
     private boolean vivo;
 
-    public Jugador() {
+    public Jugador(String nombre) {
         this.id = idSiguiente++;
-        this.nombre = "Jugador " + id;
+        this.nombre = nombre;
         this.vivo = true;
     }
 
@@ -40,6 +42,19 @@ public class Jugador {
             System.out.println("El "+nombre+ " ha muerto xD");
         }else{
             System.out.println("El "+nombre+" se ha salvado");
+        } 
+    }
+    //Método mejorado
+      public void dispararv2(Revolver r) {
+          JOptionPane.showMessageDialog(null, this.nombre+" toma la pistola y dispara","Dispara",1);
+        //System.out.println("El "+this.nombre+" se apunta y dispara");
+        if (r.disparar()) {
+            this.vivo = false;
+            JOptionPane.showMessageDialog(null,"Has Muerto","Jugador Muerto",0);
+            //System.out.println("El "+nombre+ " ha muerto xD");
+        }else{
+            //System.out.println("El "+nombre+" se ha salvado");
+            JOptionPane.showMessageDialog(null, "Te has salvado","Salvado ",1);
         } 
     }
 
@@ -58,6 +73,12 @@ public class Jugador {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + "\nNombre: " + nombre;
+    }
+    
     
     
 
